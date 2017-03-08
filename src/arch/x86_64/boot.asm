@@ -92,7 +92,7 @@ section .text
 
         ; finally, enable paging in the cr0 register
         mov eax, cr0
-        or eax, 1 << 21
+        or eax, 1 << 31
         mov cr0, eax
 
         ret
@@ -184,5 +184,5 @@ section .bss
     p2_table:
         resb 4096
     stack_bottom:
-      resb 4096
+        resb 4096
     stack_top:

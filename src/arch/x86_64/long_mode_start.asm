@@ -1,5 +1,7 @@
 global long_mode_start
 
+extern rust_main
+
 section .text
     bits 64
     long_mode_start:
@@ -10,6 +12,6 @@ section .text
         mov fs, ax
         mov gs, ax
 
-        ; call rust_main
+        call rust_main
 
         hlt
