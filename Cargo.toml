@@ -11,6 +11,11 @@ rlibc = "0.1.4"
 volatile = "0.1.0"
 spin = "0.4.5"
 x86 = "0.8.1"
+bit_field = "0.7.0"
+
+[dependencies.lazy_static]
+version = "0.2.4"
+features = ["spin_no_std"]
 
 [profile.dev]
 panic = "abort"
