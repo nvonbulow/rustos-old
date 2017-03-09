@@ -69,6 +69,7 @@ pub struct Writer {
     buffer: Unique<Buffer>,
 }
 
+#[allow(dead_code)]
 impl Writer {
     pub fn write_byte(&mut self, ascii: u8) {
         match ascii {
@@ -103,7 +104,7 @@ impl Writer {
     }
 
     pub fn new_line(&mut self) {
-        if self.row_position >= BUFFER_HEIGHT {
+        if self.row_position >= BUFFER_HEIGHT - 1 {
             for row in 1..BUFFER_HEIGHT {
                 for col in 0..BUFFER_WIDTH {
                     let buffer = self.buffer();

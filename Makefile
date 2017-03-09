@@ -22,7 +22,7 @@ clean:
 	rm -rf build target
 
 run: $(iso)
-	@qemu-system-x86_64 -cdrom $(iso) -d cpu_reset,int 2>/dev/null
+	@qemu-system-x86_64 -cdrom $(iso) -d cpu_reset,int --enable-kvm 2>/dev/null
 
 iso: $(iso)
 

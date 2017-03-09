@@ -2,8 +2,6 @@ global _start
 
 MULTIBOOT_REGISTER equ 0x36d76289
 
-extern long_mode_start
-
 section .text
     bits 32
     _start:
@@ -160,11 +158,23 @@ section .text
 
     ; Print 'ERR: ' and an error code to the VGA text buffer
     error:
-      mov dword [0xb8000], 0x4f524f45
-      mov dword [0xb8004], 0x4f3a4f52
-      mov dword [0xb8008], 0x4f204f20
-      mov byte  [0xb800a], al
-      hlt
+        mov dword [0xb8000], 0x4f524f45
+        mov dword [0xb8004], 0x4f3a4f52
+        mov dword [0xb8008], 0x4f204f20
+        mov byte  [0xb800a], al
+        hlt
+
+    bits 64
+    extern rust_main
+    long_mode_start:
+        mov ax, 0
+        mov ss, ax
+        mov ds, ax
+        mov es, ax
+        mov fs, ax
+        mov gs, ax
+
+        jmp rust_main
 
 section .rodata
     gdt64:

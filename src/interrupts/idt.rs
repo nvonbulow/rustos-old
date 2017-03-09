@@ -5,6 +5,7 @@ use bit_field::BitField;
 
 pub struct Idt([Entry; 16]);
 
+#[allow(dead_code)]
 impl Idt {
     pub fn new() -> Idt {
         Idt([Entry::missing(); 16])
@@ -71,6 +72,7 @@ impl Entry {
 #[derive(Debug, Clone, Copy)]
 pub struct EntryOptions(u16);
 
+#[allow(dead_code)]
 impl EntryOptions {
     fn minimal() -> Self {
         let mut options = 0;
